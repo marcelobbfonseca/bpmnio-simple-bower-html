@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="bower_components/bpmn-js/dist/assets/diagram-js.css"/>
+	<link rel="stylesheet" href="bower_components/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css"/>
+	<script src="bower_components/bpmn-js/dist/bpmn-viewer.js"></script>
+	<script src="bower_components/bpmn-js/dist/bpmn-modeler.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+body.size_big {
+    height: 1200px;
+    width: 960px;
+}
+div.size_big {
+    height: 500px;
+    width: 100%;
+}
+.black {
+	background-color: orange;
+}
+</style>
+
+</head>
+<body class="black">
+	<h1>"Oooh-weee!</h1>
+	<p>whatever you want Rick, we're where to help. "</p>
+
+	<div id="canvas" class="size_big" >
+
+	</div>
+	
+
+	<script type="text/javascript">
+	var BpmnViewer = window.BpmnJS;
+
+	var viewer = new BpmnViewer({ container: '#canvas' });
+	var bpmnXML = '<?xml version="1.0" encoding="UTF-8"?>\n'+
+'<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" targetNamespace="http://bpmn.io/schema/bpmn" id="Definitions_1">\n'+
+'  <bpmn:process id="Process_1" isExecutable="false">\n'+
+'    <bpmn:startEvent id="StartEvent_1"/>\n'+
+'  </bpmn:process>\n' +
+'  <bpmndi:BPMNDiagram id="BPMNDiagram_1">\n' +
+'    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">\n' +
+'      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">\n' +
+'        <dc:Bounds height="36.0" width="36.0" x="173.0" y="102.0"/>\n' +
+'      </bpmndi:BPMNShape>\n' +
+'    </bpmndi:BPMNPlane>\n' +
+'  </bpmndi:BPMNDiagram>' +
+'</bpmn:definitions>';
+
+
+
+	//IMPORT BPMN
+	viewer.importXML(bpmnXML, function(err) {
+
+	  if (!err) {
+	    console.log('success!');
+	    viewer.get('canvas').zoom('fit-viewport');
+	  } else {
+	    console.log('something went wrong:', err);
+	  }
+	});
+	</script>
+	
+</body>
+</html>
